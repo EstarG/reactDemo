@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <script type="text/babel">
+
+        function log(str){
+            document.getElementById('log').innerHTML+='<p>'+str+'</p>';;
+        }
+        document.getElementById('clear').onclick=function(){
+            document.getElementById('log').innerHTML='';
+        };
+        var Test = React.createClass({
+                    getInitialState() {
+                        log('getInitialState');
+                        return {
+                            value: this.props.value
+                        };
+                    },
+
+                    componentWillReceiveProps(nextProps){
+                        log('componentWillReceiveProps');
+                        this.setState({
+                            value: nextProps.value
+                        });
+                    },
+
+                    shouldComponentUpdate(nextProps,nextState){
+                        log('shouldComponentUpdate');
+                        return true;
+                    },
+
+                    componentWillUpdate(nextProps,nextState){
+                        log('componentWillUpdate');
+                    },
+
+                    componentWillMount(){
+                        log('componentWillMount');
+                    },
+
+                    render() {
+                        log('render');
+                        return <span>{this.props.value}</span>
+        },
+
+        componentDidMount() {
+            log('componentDidMount');
+        },
+
+        componentDidUpdate(prevProps,prevState) {
+            log('componentDidUpdate');
+        },
+
+        componentWillUnmount(prevProps,prevState) {
+            log('componentWillUnmount');
+        }
+        });
+
+
+
+        React.render(<Test value="name"/>, document.getElementById('example'));
+
+    </script>
+</head>
+<body>
+    <div id="example"></div>
+    <div id="log"></div>
+    <input type="button" value="clear" id="clear">
+</body>
+</html>

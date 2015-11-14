@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <script type="text/babel">
+
+        var Hello = React.createClass({
+
+            // 属性校验
+            propTypes: {
+                title: React.PropTypes.string,
+            },
+
+            // 默认值
+            getDefaultProps : function () {
+                return {
+                    title : 'World'
+                };
+            },
+
+            render: function() {
+                return <ul>
+                        {React.Children.map(this.props.children,function(text){
+                            return <li>{text}</li>;
+                        })}
+                      </ul>;
+            }
+        });
+
+        ReactDOM.render( <Hello>
+            <a href="#"> text1 </a>
+                text2
+            </Hello>, document.getElementById('example'));
+    </script>
+</head>
+<body>
+    <div id="example"></div>
+</body>
+</html>

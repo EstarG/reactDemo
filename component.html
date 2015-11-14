@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <script type="text/babel">
+
+        var Hello = React.createClass({
+            // 每个组件必须有，
+            render: function() {
+                return <h1> Hello react </h1>;
+            }
+        });
+
+        ReactDOM.render( <Hello/>, document.getElementById('example'));
+
+    </script>
+</head>
+<body>
+    <div id="example"></div>
+</body>
+</html>

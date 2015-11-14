@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <script type="text/babel">
+
+        var MyComponent = React.createClass({
+                    // 等render调用完毕才能获取真正的DOM节点，使用refs获取
+                    handleClick: function() {
+                        this.refs.myTextInput.value="input";
+                    },
+                    render: function() {
+                        return ( <div>
+                                <input type="text" ref="myTextInput" />
+                                <input type="button" value="Focus the text input" onClick={this.handleClick} />
+                                </div>
+                        );
+        }
+        });
+
+        ReactDOM.render(
+        <MyComponent />,
+                document.getElementById('example')
+        );
+    </script>
+</head>
+<body>
+<div id="example"></div>
+</body>
+</html>
